@@ -12,7 +12,7 @@ An identifier to denote a specific version of a text document.
 ## Operations
 
 ```python
-VersionedTextDocumentIdentifier(self, uri: str, version: int)
+__init__(self, uri: str, version: int)
 ```
 > Constructs a new TextDocumentIdentifier instance.
 > 

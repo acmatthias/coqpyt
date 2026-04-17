@@ -20,7 +20,7 @@ Represents a link between a source and a target location.
 ## Operations
 
 ```python
-LocationLink(self, originSelectionRange: Range | Dict, targetUri: str, targetRange: Range | Dict, targetSelectionRange: Range | Dict)
+__init__(self, originSelectionRange: Range | Dict, targetUri: str, targetRange: Range | Dict, targetSelectionRange: Range | Dict)
 ```
 > Constructs a new LocationLink instance.
 > 

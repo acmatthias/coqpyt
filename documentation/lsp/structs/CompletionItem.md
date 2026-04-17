@@ -33,7 +33,7 @@ Represents a possible entry that could be used to satisfy a completion context.
 > *Deprecated.* Use textEdit instead.
 
 `insertTextFormat : Optional[int]` 
-> The format of the insert text. The format applies to both the `insertText` property and the `newText` property of a provided `textEdit`. The 2 allowed values are as follows:
+> The format of the insert text. The format applies to both the `insertText` property and the `newText` property of a provided `textEdit`. The 2 allowed values are as follows (as defined in the [InsertTextFormat](./InsertTextFormat.md) enum):
 > 1. PlainText
 > 2. Snippet
 
@@ -60,8 +60,54 @@ Represents a possible entry that could be used to satisfy a completion context.
 ## Operations
 
 ```python
-CompletionItem(self, label: str, kind: Optional[int] = None, detail: Optional[int] = None, documentation: Optional[str] = None, deprecated: Optional[bool] = None, presented: Optional[bool] = None, sortText: Optional[str] = None, filterText: Optional[str] = None, insertText: Optional[str] = None, insertTextFormat: Optional[int] = None, textEdit: Optional[TextEdit | Dict] = None, additionalTextEdits: Optional[List[TextEdit | Dict]] = None, commitCharacters: Optional[List[str]] = None, command: Optional[Command | Dict] = None, data: Optional = None, score: float = 0.0)
+__init__(self, label: str, kind: Optional[int] = None, detail: Optional[int] = None, documentation: Optional[str] = None, deprecated: Optional[bool] = None, presented: Optional[bool] = None, sortText: Optional[str] = None, filterText: Optional[str] = None, insertText: Optional[str] = None, insertTextFormat: Optional[int] = None, textEdit: Optional[TextEdit | Dict] = None, additionalTextEdits: Optional[List[TextEdit | Dict]] = None, commitCharacters: Optional[List[str]] = None, command: Optional[Command | Dict] = None, data: Optional = None, score: float = 0.0)
 ```
 > Constructs a new CompletionItem instance.
 > 
-> See [#Attributes](#attributes) for parameter information.
+> `label : str`
+> > The label of this completion item. By default also the text that is inserted when selecting this completion.
+> 
+> `kind : Optional[int]` [CompletionItemKind](./CompletionItemKind.md)
+> > The kind of this completion item. Based of the kind an icon is chosen by the editor.
+> 
+> `detail : Optional[str]`
+> > A human-readable string with additional information about this item, like type or symbol information.
+> 
+> `documentation : Optional[str]`
+> > A human-readable string that represents a doc-comment.
+> 
+> `deprecated : Optional[bool]`
+> > Indicates if this item is deprecated.
+> 
+> `presented : Optional[bool]`
+> > Select this item when showing.
+> 
+> `sortText : Optional[str]`
+> > A string that should be used when comparing this item with other items. When `falsy` the label is used.
+> 
+> `filterText : Optional[str]`
+> > A string that should be used when filtering a set of completion items. When `falsy` the label is used.
+> 
+> `insertText : Optional[str]`
+> > A string that should be inserted into a document when selecting this completion. When `falsy` the label is used.
+> 
+> `insertTextFormat : Optional[int]` 
+> > The format of the insert text. 
+> 
+> `textEdit : Optional[TextEdit | Dict]` [TextEdit](./TextEdit.md)
+> > An edit which is applied to a document when selecting this completion.
+> 
+> `additionalTextEdits : Optional[List[TextEdit | Dict]]` [TextEdit](./TextEdit.md)
+> > An optional array of additional text edits that are applied when selecting this completion. 
+> 
+> `commitCharacters : Optional[List[str]]`
+> > An optional set of characters that when pressed while this completion is active will accept it first and then type that character.
+> 
+> `command : Optional[Command | Dict]` [Command](./Command.md)
+> > An optional command that is executed *after* inserting this completion.
+> 
+> `data : Optional`
+> > An data entry field that is preserved on a completion item between a completion and a completion resolve request.
+> 
+> `score : float`
+> > Score of the code completion item.

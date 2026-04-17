@@ -13,12 +13,12 @@ Abstraction to interact with coq-lsp
 ## Operations
 
 ```python
-CoqLspClient(self, root_uri: str, timeout: int = 30, memory_limit: int = 2097152, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, init_options: Dict)
+__init__(self, root_uri: str, timeout: int = 30, memory_limit: int = 2097152, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, init_options: Dict)
 ```
-> Creates a CoqLspClient
+> Creates a CoqLspClient. After starting up the lsp in a new process, it initializes all objects used for communication with the server, then calls the initialization methods on the server.
 > 
 > `root_uri : str`
-> >URI to the workspace where coq-lsp will run The URI can be either a file or a folder.
+> > URI to the workspace where coq-lsp will run The URI can be either a file or a folder.
 > 
 > `timeout : int = 30`
 > > *Optional.* Timeout used for the coq-lsp operations. Defaults to 2.
@@ -110,3 +110,6 @@ __handle_file_progress(self, params: Dict) -> None
 __wait_for_operation(self) -> None
 ```
 > Helper method used to wait for the LSP server to send `textDocument/PublishDiagnostics` notification. If the wait exceeds the endpoint's timeout, the Coq LSP client is shutdown.
+>
+> Raises: 
+> > `ResponseError` [ResponseError](../../../lsp/structs/ResponseError.md): If the shutdown flag has been set, the `ServerQuit` error code is used. If the endpoint's timeout is exceeded, the `ServerTimeout` error code is used.

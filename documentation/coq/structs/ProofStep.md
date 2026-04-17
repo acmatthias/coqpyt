@@ -31,7 +31,7 @@ Step specifically used in a proof file which contains extra information about th
 ## Operations
 
 ```python
-ProofStep(self, step: Step, goals: Union[GoalAnswer, Callable[[Position], GoalAnswer]], context: List[Term])
+__init__(self, step: Step, goals: Union[GoalAnswer, Callable[[Position], GoalAnswer]], context: List[Term])
 ```
 > Creates a new ProofStep object
 > 

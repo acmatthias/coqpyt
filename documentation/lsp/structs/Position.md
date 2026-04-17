@@ -17,7 +17,7 @@ A structure representing a position in a file, indexed by its line and character
 ## Operations
 
 ```python
-Position(self, line: int, character: int, offset: int = 0)
+__init__(self, line: int, character: int, offset: int = 0)
 ```
 > Constructs a new Position instance.
 > 

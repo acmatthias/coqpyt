@@ -14,7 +14,7 @@ Structure containing information about the language servers progress in processi
 ## Operations
 
 ```python
-CoqFileProgressProcessingInfo(self, range: Range, kind: Optional[CoqFileProgressKind])
+__init__(self, range: Range, kind: Optional[CoqFileProgressKind])
 ```
 > Creates a new CoqFileProgressProcessingInfo instance.
 > 

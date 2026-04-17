@@ -14,7 +14,7 @@ Status of a documents completion in processing. Considers the document as a whol
 ## Operations
 
 ```python
-CompletionStatus(self, status: str, range: Range)
+__init__(self, status: str, range: Range)
 ```
 > Creates a new CompletionStatus instance.
 > 

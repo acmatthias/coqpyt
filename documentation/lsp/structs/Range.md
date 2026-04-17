@@ -14,7 +14,7 @@ A structure representing a range of characters in a file. Generally, this is use
 ## Operations
 
 ```python
-Range(self, start: Position | Dict, end: Position | Dict)
+__init__(self, start: Position | Dict, end: Position | Dict)
 ```
 > Constructs a new Range instance.
 > 

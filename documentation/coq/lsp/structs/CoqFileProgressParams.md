@@ -14,7 +14,7 @@ Structure holding information on the processing progress of each range in the AS
 ## Operations
 
 ```python
-CoqFileProgressParams(self, textDocument: VersionedTextDocumentIdentifier, processing: List[CoqFileProgressProcessingInfo])
+__init__(self, textDocument: VersionedTextDocumentIdentifier, processing: List[CoqFileProgressProcessingInfo])
 ```
 > Creates a new CoqFileProgressParams instance.
 > 

@@ -14,7 +14,7 @@ Represents a parameter of a callable-signature. A parameter can have a label and
 ## Operations
 
 ```python
-ParameterInformation(self, label: str, documentation: str = "")
+__init__(self, label: str, documentation: str = "")
 ```
 > Constructs a new ParameterInformation instance.
 > 

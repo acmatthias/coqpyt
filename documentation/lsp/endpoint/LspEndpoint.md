@@ -35,7 +35,7 @@ Endpoint used to handle sending and receiving messages to and from the language 
 ## Operations
 
 ```python
-LspEndpoint(self, json_rpc_endpoint, method_callbacks = {}, notify_callbacks = {}, timeout = 2)
+__init__(self, json_rpc_endpoint, method_callbacks = {}, notify_callbacks = {}, timeout = 2)
 ```
 > Creates a new LspEndpoint to communicate with a language server.
 > 
@@ -74,6 +74,9 @@ stop(self) -> None
 run(self) -> None
 ```
 > Initiates the endpoint to listen for messages over `json_rpc_endpoint` and handle any messages that arrive.
+> 
+> Raises:
+> > `ResponseError` [ResponseError](../structs/ResponseError.md): If the language server attempts to call a method on the client which is not defined in `method_callbacks`, the `MethodNotFound` error code is used.
 
 ```python
 send_response(self, id: int, result, error) -> None
@@ -115,6 +118,10 @@ call_method(self, method_name: str, **kwargs) -> Any
 > > Parameters to pass to the method.
 > 
 > Returns: `Any` The response received from the language server.
+>
+> Raises:
+> > `TimeoutError`: If the method call takes longer to respond than the timeout.
+> > `ResponseError` [ResponseError](../structs/ResponseError.md): If the server returns an error from the method call.
 
 ```python
 send_notification(self, method_name, **kwargs) -> None

@@ -20,7 +20,7 @@ An abstraction over a temporary file created by CoqPyt to be used to get informa
 ## Operations
 
 ```python
-_AuxFile(self, file_path: str, coq_lsp_options: Tuple[str], copy: bool = False, workspace: Optional[str] = None, timeout: int = 30)
+__init__(self, file_path: str, coq_lsp_options: Tuple[str], copy: bool = False, workspace: Optional[str] = None, timeout: int = 30)
 ```
 > Creates a new AuxFile object
 > 

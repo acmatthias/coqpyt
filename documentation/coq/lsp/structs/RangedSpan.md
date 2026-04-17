@@ -16,7 +16,7 @@ Structure holding information about a vernacular expression in the AST of the fi
 ## Operations
 
 ```python
-RangedSpan(self, range: Range, span: any)
+__init__(self, range: Range, span: any)
 ```
 > Creates a new RangedSpan instance.
 > 

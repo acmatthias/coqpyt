@@ -17,7 +17,7 @@ Abstraction of a Coq hypothesis.
 ## Operations
 
 ```python
-Hyp(self, names: List[str], ty: str, definition: Optional[str])
+__init__(self, names: List[str], ty: str, definition: Optional[str])
 ```
 > Creates a new Hyp object.
 > 

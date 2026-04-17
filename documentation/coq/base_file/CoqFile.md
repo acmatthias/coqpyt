@@ -71,7 +71,7 @@ Abstraction to interact with a Coq file.
 ## Operations
 
 ```python
-CoqFile(self, file_path: str, library: Optional[str] = None, timeout: int = 30, memory_limit: int = 2097152, workspace: Optional[str] = None, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, coqtop: str = "coqtop")
+__init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30, memory_limit: int = 2097152, workspace: Optional[str] = None, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, coqtop: str = "coqtop")
 ```
 >> Creates a CoqFile.
 >
@@ -125,6 +125,9 @@ _make_change(self, change_function, *args) -> None
 > 
 > `*args`
 > > Parameters to pass to `change_function`.
+> 
+> Raises: 
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the current file doesn't exist. 
 
 ```python
 _delete_step(self, step_index: int) -> None
@@ -133,6 +136,9 @@ _delete_step(self, step_index: int) -> None
 > 
 > `step_index : int`
 > > Index of the step to delete.
+> 
+> Raises: 
+> > `InvalidDeleteException` [InvalidDeleteException](../exceptions/InvalidDeleteException.md): If the step at the provided index causes the file to become invalid.
 
 ```python
 _add_step(self, previous_step_index: int, step_text: str) -> None
@@ -144,6 +150,9 @@ _add_step(self, previous_step_index: int, step_text: str) -> None
 > 
 > `step_text : str`
 > > Text to insert, corresponding to a Coq step.
+> 
+> Raises: 
+> > `InvalidAddException` [InvalidAddException](../exceptions/InvalidAddException.md): If the provided step causes the file to become invalid.
 
 ```python
 _get_steps_taken_offset(self, changes: List[CoqChange]) -> int
@@ -179,6 +188,10 @@ delete_step(self, step_index: int) -> None
 >
 > `step_index : int`
 > > The index of the step to remove.
+>
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidDeleteException` [InvalidDeleteException](../exceptions/InvalidDeleteException.md): If the file is invalid after deleting the step.
 
 ```python
 add_step(self, previous_step_index: int, step_text: str) -> None
@@ -190,6 +203,10 @@ add_step(self, previous_step_index: int, step_text: str) -> None
 >
 > `step_text: str`
 > > The text of the step to add.
+> 
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidAddException` [InvalidAddException](../exceptions/InvalidAddException.md): If the file is invalid after adding the step.
 
 ```python
 change_steps(self, changes: List[CoqChange]) -> None
@@ -198,6 +215,11 @@ change_steps(self, changes: List[CoqChange]) -> None
 >
 > `changes : List[CoqChange]` [CoqChange](../changes/CoqChange.md)
 > > The changes to be applied to the Coq file.
+> 
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidChangeException` [InvalidChangeException](../exceptions/InvalidChangeException.md): If the file is invalid after applying the changes.
+> > `NotImplementedError`: If the changes contain a CoqChange that is not a CoqAdd or CoqDelete.
 
 ```python
 save_vo(self) -> None
@@ -345,3 +367,7 @@ __change_steps(self, changes: List[CoqChange]) -> None
 > 
 > `changes : List[CoqChange]` [CoqChange](../changes/CoqChange.md)
 > > List of changes to apply to the file.
+>
+> Raises:
+> > `NotImplementedError`: If the type of change passed into the function is not of type `CoqAdd` or `CoqDelete`.
+> > `InvalidChangeException` [InvalidChangeException](../exceptions/InvalidChangeException.md): If the provided change contains more than one step or the change causes the file to become invalid.

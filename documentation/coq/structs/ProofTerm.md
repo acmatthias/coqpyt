@@ -16,7 +16,7 @@ Term specifically used in a proof file.
 ## Operations
 
 ```python
-ProofTerm(self, term: Term, context: List[Term], steps: List[ProofStep], program: Optional[Term] = None)
+__init__(self, term: Term, context: List[Term], steps: List[ProofStep], program: Optional[Term] = None)
 ```
 > Creates a new ProofTerm object
 > 

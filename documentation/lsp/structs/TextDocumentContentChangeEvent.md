@@ -17,7 +17,7 @@ An event describing a change to a text document. If range and rangeLength are om
 ## Operations
 
 ```python
-TextDocumentContentChangeEvent(self, range: Optional[Range], rangeLength: Optional[int], text: str)
+__init__(self, range: Optional[Range], rangeLength: Optional[int], text: str)
 ```
 > Constructs a new TextDocumentContentChangeEvent instance.
 > 

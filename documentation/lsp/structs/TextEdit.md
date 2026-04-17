@@ -14,7 +14,7 @@ A textual edit applicable to a text document.
 ## Operations
 
 ```python
-TextEdit(self, range: Range | Dict, newText: str)
+__init__(self, range: Range | Dict, newText: str)
 ```
 > Constructs a new TextEdit instance.
 > 

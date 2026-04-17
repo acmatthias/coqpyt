@@ -14,7 +14,7 @@ Abstraction of a Coq goal.
 ## Operations
 
 ```python
-Goal(self, hyps: List[Hyp], ty: str)
+__init__(self, hyps: List[Hyp], ty: str)
 ```
 > Creates a new Goal object.
 > 

@@ -17,7 +17,7 @@ Represents the signature of something callable. A signature can have a label, li
 ## Operations
 
 ```python
-SignatureInformation(self, label: str, documentation: str = "", parameters: List[ParameterInformation] | List[Dict] = [])
+__init__(self, label: str, documentation: str = "", parameters: List[ParameterInformation] | List[Dict] = [])
 ```
 > Constructs a new SignatureInformation instance.
 > 

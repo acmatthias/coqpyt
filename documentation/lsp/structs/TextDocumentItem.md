@@ -8,7 +8,7 @@ An item to transfer a text document from the client to the server.
 > The location of the file.
 
 `languageId : str`
-> Identifier of the file type. For a Coq file, this will be "coq".
+> Identifier of the file type. For a Coq file, this will be "coq". Other possible entries can be found in the [LANGUAGE_IDENTIFIER](./LANGUAGE_IDENTIFIER.md) enum.
 
 `version : int`
 > The version number of the file.
@@ -20,7 +20,7 @@ An item to transfer a text document from the client to the server.
 ## Operations
 
 ```python
-TextDocumentItem(self, uri: str, languageId: str, version: int, text: str)
+__init__(self, uri: str, languageId: str, version: int, text: str)
 ```
 > Constructs a new Diagnostic instance.
 > 

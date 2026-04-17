@@ -25,7 +25,7 @@ In this class, the true stack is store in `stack` while the three other arrays `
 ## Operations
 
 ```python
-SegmentStack(self)
+__init__(self)
 ```
 > Creates a new SegmentStack instance and initializes all list attributes to empty.
 

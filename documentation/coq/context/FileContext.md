@@ -38,13 +38,13 @@ Represents the context of a Coq file in terms of the loaded terms and libraries 
 > Version based function to get the external entry field of a Coq expression.
 
 `ext_index : Callable`
-> Version based function to get the external index field of a Coq expression
+> Version based function to get the external index field of a Coq expression. This function will be made private once `__get_program_context` is extracted from ProofFile to here.
 
 `__fixpoint_notations : Callable`
 > Version based function to get the notations of a term in the AST.
 
 `obligation_tag_with_id : Callable`
-> Version based function to check if an obligation tag references an id.
+> Version based function to check if an obligation tag references an id. This function will be made private once `__get_program_context` is extracted from ProofFile to here.
 
 
 ## Properties
@@ -68,7 +68,7 @@ Represents the context of a Coq file in terms of the loaded terms and libraries 
 ## Operations
 
 ```python
-FileContext(self, path: str, module: Optional[List[str]] = None, coqtop: str = "coqtop", terms: Optional[Dict[str, Term]] = None)
+__init__(self, path: str, module: Optional[List[str]] = None, coqtop: str = "coqtop", terms: Optional[Dict[str, Term]] = None)
 ```
 > Creates a new FileContext object.
 > 
@@ -174,6 +174,9 @@ remove_library(self, name: str) -> None
 > 
 > `name : str`
 > > The name of the library.
+> 
+> Raises:
+> > `RuntimeError`: If the library was not found in the current context.
 
 ```python
 append_module_prefix(self, name: str) -> str:
@@ -207,6 +210,9 @@ get_notation(self, notation: str, scope: str) -> Term
 > > Scope of the notation. E.g. "nat_scope".
 > 
 > Returns: `Term` [Term](../structs/Term.md) Term that corresponds to the notation.
+>
+> Raises:
+> > `NotationNotFoundException` [NotationNotFoundException](../exceptions/NotationNotFoundException.md): If the notation is not found in the context.
 
 ```python
 reset(self)
@@ -311,7 +317,7 @@ __term_type(self, expr: List) -> TermType
 ```python
 is_id(el) -> bool
 ```
-> Checks if an element of an AST is an identifier.
+> Checks if an element of an AST is an identifier (qualid).
 > 
 > `el`
 > > Element of the expression to consider.
@@ -331,7 +337,7 @@ is_notation(el) -> bool
 ```python
 get_id(id: List) -> Optional[str]
 ```
-> Gets the identifier of an element of the AST. 
+> Gets the identifier (qualid) of an element of the AST. This function will be made private once `__step_context__` is extracted from ProofFile to here.
 > 
 > `id : List`
 > > Element of the expression to consider.
@@ -341,7 +347,7 @@ get_id(id: List) -> Optional[str]
 ```python
 get_ident(id: List) -> Optional[str]
 ```
-> Gets the identifier of a generic argument of an element in the AST. 
+> Gets the identifier of a generic argument of an element in the AST. Specifically, the generic argument is the inhabitant of some type at the levels raw, global, or typed, along with the representation of the type. This function will be made private once `__get_program_context` is extracted from ProofFile to here.
 > 
 > `el : List`
 > > Element of the expression to consider.
@@ -371,7 +377,7 @@ __get_names(expr: List) -> List[str]
 ```python
 __get_v(el: List) -> Optional[str]
 ```
-> Gets the `v` attribute of an element in the AST.
+> Gets the `v` attribute of an element in the AST. 
 > 
 > `el : List`
 > > Element of the AST.

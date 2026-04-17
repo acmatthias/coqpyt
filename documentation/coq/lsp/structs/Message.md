@@ -17,7 +17,7 @@ A structure representing the messages created by the language server when evalua
 ## Operations
 
 ```python
-Message(self, level: int, text: str, range = None)
+__init__(self, level: int, text: str, range = None)
 ```
 > Creates a new Message object.
 > 

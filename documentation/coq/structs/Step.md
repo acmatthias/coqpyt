@@ -20,9 +20,7 @@ Individual step to be executed in a Coq file.
 ## Operations
 
 ```python
-
-Step(self, text: str, short_text: str, ast: RangedSpan)
-
+__init__(self, text: str, short_text: str, ast: RangedSpan)
 ```
 > Creates a new Step object.
 >

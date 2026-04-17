@@ -29,7 +29,7 @@ Represents programming constructs like variables, classes, interfaces etc. that 
 ## Operations
 
 ```python
-SymbolInformation(self, name: str, kind: int, detail = None, range = None, selectionRange = None, location = None, containerName: Optional[str] = None, deprecated: bool = False)
+__init__(self, name: str, kind: int, detail = None, range = None, selectionRange = None, location = None, containerName: Optional[str] = None, deprecated: bool = False)
 ```
 > Constructs a new SymbolInformation instance.
 > 

@@ -14,7 +14,7 @@ Represents a location inside a resource, such as a line inside a text file.
 ## Operations
 
 ```python
-Location(self, uri: str, range: Range | Dict)
+__init__(self, uri: str, range: Range | Dict)
 ```
 > Constructs a new Location instance.
 > 

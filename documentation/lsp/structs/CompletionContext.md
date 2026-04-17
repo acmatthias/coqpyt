@@ -17,7 +17,7 @@ Contains additional information about the context in which a completion request 
 ## Operations
 
 ```python
-CompletionContext(self, triggerKind: int, triggerCharacter: Optional[str] = None)
+__init__(self, triggerKind: int, triggerCharacter: Optional[str] = None)
 ```
 > Constructs a new CompletionContext instance.
 > 

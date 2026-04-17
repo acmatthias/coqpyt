@@ -56,7 +56,7 @@ Allows to get information about the proofs of a Coq file. ProofState will run th
 ## Operations
 
 ```python
-ProofFile(self, file_path: str, library: Optional[str] = None, timeout: int = 30, memory_limit: int = 2097152, workspace: Optional[str] = None, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, coqtop: str = "coqtop", error_mode: str = "strict", use_disk_cache: bool = False)
+__init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30, memory_limit: int = 2097152, workspace: Optional[str] = None, coq_lsp: str = "coq-lsp", coq_lsp_options: Tuple[str] = None, coqtop: str = "coqtop", error_mode: str = "strict", use_disk_cache: bool = False)
 ```
 > Creates a ProofFile.
 >
@@ -118,6 +118,10 @@ append_step(self, proof: ProofTerm, step_text: str) -> None
 > 
 > `step_text : str`
 > > The text of the step to add.
+> 
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidAddException` [InvalidAddException](../exceptions/InvalidAddException.md): If the file is invalid after adding the step.
 
 ```python
 pop_step(self, proof: ProofTerm) -> None
@@ -126,6 +130,10 @@ pop_step(self, proof: ProofTerm) -> None
 > 
 > `proof : ProofTerm` [ProofTerm](../structs/ProofTerm.md)
 > > The proof of the file from which the step is removed.
+> 
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidDeleteException` [InvalidDeleteException](../exceptions/InvalidDeleteException.md): If the file is invalid after removing the step.
 
 ```python
 change_proof(self, proof: ProofTerm, proof_changes: List[ProofChange]) -> None
@@ -137,6 +145,11 @@ change_proof(self, proof: ProofTerm, proof_changes: List[ProofChange]) -> None
 > 
 > `changes : List[ProofChange]` [ProofChange](../changes/ProofChange.md)
 > > The changes to be applied to the proof. 
+>
+> Raises:
+> > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
+> > `InvalidChangeException` [InvalidChangeException](../exceptions/InvalidChangeException.md): If the file is invalid after applying the changes.
+> > `NotImplementedError`: If the changes contain an unknown ProofChange.
 
 ```python
 
@@ -200,6 +213,9 @@ __step_context(self, step: Step) -> List[Term]
 > > The step to consider
 > 
 > Returns: `List[Term]` [Term](../structs/Term.md) The list of terms used.
+>
+> Raises:
+> > `NotationNotFoundException` [NotationNotFoundException](../exceptions/NotationNotFoundException.md): If the notation used in the step was not found and the error mode for the current file is set to `"strict"`.
 
 ```python
 __get_program_context(self) -> Tuple[Term, List[Term]]
@@ -207,6 +223,9 @@ __get_program_context(self) -> Tuple[Term, List[Term]]
 > Gets all terms defined that are accessible to the last step executed in the current file.
 > 
 > Returns: `Tuple[Term, List[Term]]` [Term](../structs/Term.md) Tuple of the last term defined for this scope and the list of all terms defined.
+>
+> Raises:
+> > `RuntimeError`: If the obligation used to locate the current location in the file does not exist.
 
 ```python
 __handle_obligations(self, step: Step, undo: bool = False) -> None
@@ -312,6 +331,9 @@ __find_step_index(self, range: Range) -> int
 > > Range of the step to search for.
 > 
 > Returns: `int` Index of the step.
+>
+> Raises:
+> > `RuntimeError`: If no step exists in the provided range.
 
 ```python
 __get_step(self, step_index: int) -> ProofStep

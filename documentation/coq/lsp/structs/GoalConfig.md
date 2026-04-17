@@ -23,7 +23,7 @@ Structure representing the GoalConfig of the coq-lsp. This is the main object fo
 ## Operations
 
 ```python
-GoalConfig(self, goals: List[Goal], stack: List[Tuple[List[Goal], List[Goal]]], shelf: List[Goal], given_up: List[Goal], bullet: Any = None)
+__init__(self, goals: List[Goal], stack: List[Tuple[List[Goal], List[Goal]]], shelf: List[Goal], given_up: List[Goal], bullet: Any = None)
 ```
 > Creates a new GoalConfig object.
 > 

@@ -17,7 +17,7 @@ Signature help represents the signature of something callable. There can be mult
 ## Operations
 
 ```python
-SignatureHelp(self, signatures: List[Signatures] | List[Dict], activeSignature: int = 0, activeParameter: int = 0)
+__init__(self, signatures: List[Signatures] | List[Dict], activeSignature: int = 0, activeParameter: int = 0)
 ```
 > Constructs a new SignatureHelp instance.
 > 

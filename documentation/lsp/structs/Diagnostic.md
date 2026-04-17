@@ -8,7 +8,7 @@ A structure representing a diagnostic about a part of a file. These can be anyth
 > The range at which the message applies in a resource file.
 
 `severity : Optional[int]`
-> The diagnostic's severity. The four allowed values are as follows:
+> The diagnostic's severity. The four allowed values are as follows (as found in the [DiagnosticSeverity](./DiagnosticSeverity.md) enum):
 > 1. Error
 > 2. Warning
 > 3. Information
@@ -32,7 +32,7 @@ A structure representing a diagnostic about a part of a file. These can be anyth
 ## Operations
 
 ```python
-Diagnostic(self, range: Range | Dict, message: str, severity: Optional[int] = None, code: Optional[str] = None, codeDescription = None, source: Optional[str] = None, tags = None, relatedInformation: Optional[List] = None, data = None)
+__init__(self, range: Range | Dict, message: str, severity: Optional[int] = None, code: Optional[str] = None, codeDescription = None, source: Optional[str] = None, tags = None, relatedInformation: Optional[List] = None, data = None)
 ```
 > Constructs a new Diagnostic instance.
 > 
@@ -58,7 +58,7 @@ Diagnostic(self, range: Range | Dict, message: str, severity: Optional[int] = No
 > > *Optional.* Unused by CoqPyt. Defaults to None.
 > 
 > `relatedInformation : Optional[List] = None`
-> > *Optional.* An array of related diagnostic information. Defaults to None.
+> > *Optional.* An array of related diagnostic information. The related information should be in the format of [DiagnosticRelatedInformation](./DiagnosticRelatedInformation.md). Defaults to None.
 > 
 > `data = None`
 > > *Optional.* Unused by CoqPyt. Defaults to None.

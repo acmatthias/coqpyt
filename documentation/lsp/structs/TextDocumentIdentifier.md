@@ -11,7 +11,7 @@ Text documents are identified using a URI. On the protocol level, URIs are passe
 ## Operations
 
 ```python
-TextDocumentIdentifier(self, uri: str)
+__init__(self, uri: str)
 ```
 > Constructs a new TextDocumentIdentifier instance.
 > 

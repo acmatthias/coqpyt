@@ -14,7 +14,7 @@ Structure containing all elements of the AST of the file and the completion stat
 ## Operations
 
 ```python
-FlecheDocument(self, spans: List[RangedSpan], completed: CompletionStatus)
+__init__(self, spans: List[RangedSpan], completed: CompletionStatus)
 ```
 > Creates a new FlecheDocument instance.
 > 

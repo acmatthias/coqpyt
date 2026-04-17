@@ -14,7 +14,7 @@ Contains information about the result of a diagnostic query, combining the range
 ## Operations
 
 ```python
-Result(self, range: Range, message: Message)
+__init__(self, range: Range, message: Message)
 ```
 > Creates a new Result instance.
 > 

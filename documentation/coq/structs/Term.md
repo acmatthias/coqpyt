@@ -29,7 +29,7 @@ Term of a Coq file. Represents a variable that is defined in a file or library t
 ## Operations
 
 ```python
-Term(self, step: Step, type: TermType, file_path: str, module: List[str])
+__init__(self, step: Step, type: TermType, file_path: str, module: List[str])
 ```
 > Creates a new Term object.
 > 

@@ -11,7 +11,7 @@ LspClient is used to communicate with an instance of a language server, providin
 ## Operations
 
 ```python
-LspClient(self, lsp_endpoint: LspEndpoint)
+__init__(self, lsp_endpoint: LspEndpoint)
 ```
 > Constructs a new LspClient instance.
 > 
@@ -160,9 +160,9 @@ signatureHelp(self, textDocument: TextDocumentItem, position: Position) -> Signa
 > Returns: `SignatureHelp` [SignatureHelp](../structs/SignatureHelp.md) Information about the symbol at `position`.
 
 ```python
-completion(self, textDocument: TextDocumentItem, position: Position, context: CompletionContext) -> List[CompletionItem]
+completion(self, textDocument: TextDocumentItem, position: Position, context: CompletionContext) -> List[CompletionItem] | CompletionList
 ```
-> The Completion request is sent from the client to the server to compute completion items at a given cursor position. The returned completion item should have the documentation property filled in.
+> The Completion request is sent from the client to the server to compute completion items at a given cursor position. The returned completion items should have the documentation property filled in.
 > 
 > `textDocument : TextDocumentItem` [TextDocumentItem](../structs/TextDocumentItem.md)
 > > The text document.
@@ -173,7 +173,7 @@ completion(self, textDocument: TextDocumentItem, position: Position, context: Co
 > `context : CompletionContext` [CompletionContext](../structs/CompletionContext.md)
 > > The completion context. This is only available if the client specifies to send this using `ClientCapabilities.textDocument.completion.contextSupport === true`.
 > 
-> Returns: `List[CompletionItem]` [CompletionItem](../structs/CompletionItem.md) List of possible items that could complete the context.
+> Returns: `List[CompletionItem] | CompletionList` [CompletionItem](../structs/CompletionItem.md) [CompletionList](../structs//CompletionList.md) List of possible items that could complete the context. A CompletionList is used if the result from the language server has the `isIncomplete` property.
 
 ```python
 declaration(self, textDocument: TextDocumentItem, position: Position) -> List[Location] | List[LocationLink]

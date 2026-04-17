@@ -29,7 +29,7 @@ Structure representing the GoalAnswer of the coq-lsp. Goal answer contains speci
 ## Operations
 
 ```python
-GoalAnswer(self, textDocument: VersionedTextDocumentIdentifier, position: Position, messages: List[Message], goals: Optional[GoalConfig] = None, error: Any = None, program: List = [], range: Range = None)
+__init__(self, textDocument: VersionedTextDocumentIdentifier, position: Position, messages: List[Message], goals: Optional[GoalConfig] = None, error: Any = None, program: List = [], range: Range = None)
 ```
 > Creates a new GoalAnswer object.
 > 

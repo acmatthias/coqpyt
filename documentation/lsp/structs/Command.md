@@ -17,7 +17,7 @@ Represents specific commands that can be run by the code editor.
 ## Operations
 
 ```python
-Command(self, title: str, command: str, arguments: List)
+__init__(self, title: str, command: str, arguments: List)
 ```
 > Constructs a new Diagnostic instance.
 > 

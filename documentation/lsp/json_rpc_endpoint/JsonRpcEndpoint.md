@@ -19,7 +19,7 @@ Thread safe JSON RPC endpoint implementation. Responsible to receive and send JS
 ## Operations
 
 ```python
-JsonRpcEndpoint(self, stdin, stdout)
+__init__(self, stdin, stdout)
 ```
 > Creates a new JSON RPC Endpoint for sending messages across processes.
 > 
@@ -43,7 +43,9 @@ recv_response(self) -> Dict
 > Receives a message and converts it to a dictionary.
 > 
 > Returns: `Dict` The message received.
-
+>
+> Raises:
+> > `ResponseError` [ResponseError](../structs/ResponseError.md): The `ParseError` code is used if the specified size of the message is not an integer, the header doesn't end with a new line, the size of the body of the message is not an integer, the type of the header is unknown, or no size is provided.
 
 ## Static Operations
 

@@ -14,7 +14,7 @@ An object representing a keyword query of all diagnostics, along with any result
 ## Operations
 
 ```python
-Query(self, query: str, results: List[Result])
+__init__(self, query: str, results: List[Result])
 ```
 > Creates a new Query instance.
 > 

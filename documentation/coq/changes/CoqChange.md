@@ -1,3 +1,3 @@
 # `CoqChange`
 
-Interface to represent changes to coq files.
+Interface to represent changes to Rocq files.

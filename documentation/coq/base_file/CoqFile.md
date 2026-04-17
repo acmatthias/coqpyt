@@ -1,6 +1,6 @@
 # `CoqFile`
 
-Abstraction to interact with a Coq file.
+Abstraction to interact with a Rocq file.
 
 ## Attributes
 
@@ -8,7 +8,7 @@ Abstraction to interact with a Coq file.
 > coq-lsp client used on the file.
 
 `ast : List[RangedSpan]` [RangedSpan](../lsp/structs/RangedSpan.md)
-> AST of the Coq file. Each element is a step of execution in the Coq file.
+> AST of the Rocq file. Each element is a step of execution in the Rocq file.
 
 `steps_taken : int`
 > The number of steps already executed.
@@ -17,16 +17,16 @@ Abstraction to interact with a Coq file.
 > The context defined in the file.
 
 `path : str`
-> Path of the file. If the file is from the Coq library, a temporary file will be used.
+> Path of the file. If the file is from the Rocq library, a temporary file will be used.
 
 `_path : str`
-> Path of the actual file used. Points to the temporary file if `path` is from the Coq library.
+> Path of the actual file used. Points to the temporary file if `path` is from the Rocq library.
 
 `file_module : List[str]`
 > Modules where the file is included.
 
 `steps : List[Step]` [Step](../structs/Step.md)
-> Steps of the Coq file. Derived from the ast.
+> Steps of the Rocq file. Derived from the ast.
 
 `version : int`
 > Version of current file. Increments after each change to the file.
@@ -35,7 +35,7 @@ Abstraction to interact with a Coq file.
 > Absolute path for the workspace.
 
 `is_valid : bool`
-> Whether the Coq file is valid, contained no errors.
+> Whether the Rocq file is valid, contained no errors.
 
 `__from_lib : bool`
 > Whether the file's library is from the `Coq.Init` or `Corelib.Init` modules.
@@ -62,10 +62,10 @@ Abstraction to interact with a Coq file.
 > True if the whole file was already executed.
 
 `diagnostics : List[Diagnostic]` [Diagnostic](../../lsp/structs/Diagnostic.md)
-> The diagnostics of the file. Includes all messages given by Coq.
+> The diagnostics of the file. Includes all messages given by Rocq.
 
 `errors : List[Diagnostic]` [Diagnostic](../../lsp/structs/Diagnostic.md)
-> The errors of the file. Includes all messages given by Coq with severity 1.
+> The errors of the file. Includes all messages given by Rocq with severity 1.
 
 
 ## Operations
@@ -76,7 +76,7 @@ __init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30,
 >> Creates a CoqFile.
 >
 > `file_path : str`
-> > Path of the Coq file.
+> > Path of the Rocq file.
 >
 > `library : Optional[str] = None`
 > > *Optional.* The library of the file. Defaults to None.
@@ -97,7 +97,7 @@ __init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30,
 > > *Optional.* Options to be passed to the coq-lsp on startup. Defaults to None.
 >
 > `coqtop : str = "coqtop"`
-> > *Optional.* Path to the coqtop binary used to compile the Coq libraries imported by coq-lsp. This is NOT passed as a parameter to coq-lsp, it is simply used to check the Coq version in use. Defaults to "coqtop".
+> > *Optional.* Path to the coqtop binary used to compile the Rocq libraries imported by coq-lsp. This is NOT passed as a parameter to coq-lsp, it is simply used to check the Rocq version in use. Defaults to "coqtop".
 
 ```python
 _handle_exception(self, e) -> None
@@ -149,7 +149,7 @@ _add_step(self, previous_step_index: int, step_text: str) -> None
 > > Index of the step to insert the text after.
 > 
 > `step_text : str`
-> > Text to insert, corresponding to a Coq step.
+> > Text to insert, corresponding to a Rocq step.
 > 
 > Raises: 
 > > `InvalidAddException` [InvalidAddException](../exceptions/InvalidAddException.md): If the provided step causes the file to become invalid.
@@ -211,10 +211,10 @@ add_step(self, previous_step_index: int, step_text: str) -> None
 ```python
 change_steps(self, changes: List[CoqChange]) -> None
 ```
-> Changes the steps of the original Coq file transactionally. If an exception is thrown the file will not be changed.
+> Changes the steps of the original Rocq file transactionally. If an exception is thrown the file will not be changed.
 >
 > `changes : List[CoqChange]` [CoqChange](../changes/CoqChange.md)
-> > The changes to be applied to the Coq file.
+> > The changes to be applied to the Rocq file.
 > 
 > Raises:
 > > `InvalidFileException` [InvalidFileException](../exceptions/InvalidFileException.md): If the file being changed is not valid.
@@ -224,7 +224,7 @@ change_steps(self, changes: List[CoqChange]) -> None
 ```python
 save_vo(self) -> None
 ```
-> Compiles the vo file for this Coq file.
+> Compiles the vo file for this Rocq file.
 
 ```python
 close(self) -> None
@@ -234,10 +234,10 @@ close(self) -> None
 ```python
 __init_path(self, file_path: str, library: str) -> None
 ```
-> Initializes the path to the file this object represents. If the file is from the Coq library, a copy of the file will be created.
+> Initializes the path to the file this object represents. If the file is from the Rocq library, a copy of the file will be created.
 > 
 > `file_path : str`
-> > Path of the Coq file.
+> > Path of the Rocq file.
 > 
 > `library : Optional[str]`
 > > The library of the file.
@@ -313,7 +313,7 @@ __update_steps(self) -> None
 ```python
 __delete_step_text(self, step_index: int) -> None
 ```
-> Removes the text of a step and writes the changes to the Coq file.
+> Removes the text of a step and writes the changes to the Rocq file.
 > 
 > `step_index : int`
 > > Index of the step to delete.
@@ -321,13 +321,13 @@ __delete_step_text(self, step_index: int) -> None
 ```python
 __add_step_text(self, previous_step_index: int, step_text: str) -> None
 ```
-> Adds the contents of `step_text` after the specified step and writes the changes to the Coq file.
+> Adds the contents of `step_text` after the specified step and writes the changes to the Rocq file.
 > 
 > `previous_step_index : int`
 > > Index of the step to insert the text after.
 > 
 > `step_text : str`
-> > Text to insert, corresponding to a Coq step.
+> > Text to insert, corresponding to a Rocq step.
 
 ```python
 __delete_update_ast(self, step_index: int) -> None
@@ -346,7 +346,7 @@ __add_update_ast(self, previous_step_index: int, step_text: str) -> Step
 > > Index of the step to insert the text after.
 > 
 > `step_text : str`
-> > Text to insert, corresponding to a Coq step.
+> > Text to insert, corresponding to a Rocq step.
 > 
 > Returns: `Step` [Step](../structs/Step.md) The `Step` object created from the text.
 

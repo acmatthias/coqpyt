@@ -35,10 +35,10 @@ __init__(self, root_uri: str, timeout: int = 30, memory_limit: int = 2097152, co
 > `init_options : Dict`
 > > *Optional.* Initialization options for coq-lsp server. Available options are:
 > > - max_errors (int): Maximum number of errors per file, after that, coq-lsp will stop checking the file. Defaults to 120000000.
-> > - show_coq_info_messages (bool): Show Coq's info messages as diagnostics. Defaults to false.
-> > - show_notices_as_diagnostics (bool): Show Coq's notice messages as diagnostics, such as `About` and `Search` operations. Defaults to false.
-> > - debug (bool): Enable Debug in Coq Server. Defaults to false. 
-> > - pp_type (int): Method to print Coq Terms. 0 = Print to string. 1 = Use jsCoq's Pp rich layout printer. 2 = Coq Layout Engine. Defaults to 1.
+> > - show_coq_info_messages (bool): Show Rocq's info messages as diagnostics. Defaults to false.
+> > - show_notices_as_diagnostics (bool): Show Rocq's notice messages as diagnostics, such as `About` and `Search` operations. Defaults to false.
+> > - debug (bool): Enable Debug in Rocq Server. Defaults to false. 
+> > - pp_type (int): Method to print Rocq Terms. 0 = Print to string. 1 = Use jsCoq's Pp rich layout printer. 2 = Rocq Layout Engine. Defaults to 1.
 
 ```python
 didOpen(self, textDocument: TextDocumentItem) -> None
@@ -109,7 +109,7 @@ __handle_file_progress(self, params: Dict) -> None
 ```python
 __wait_for_operation(self) -> None
 ```
-> Helper method used to wait for the LSP server to send `textDocument/PublishDiagnostics` notification. If the wait exceeds the endpoint's timeout, the Coq LSP client is shutdown.
+> Helper method used to wait for the LSP server to send `textDocument/PublishDiagnostics` notification. If the wait exceeds the endpoint's timeout, the Rocq LSP client is shutdown.
 >
 > Raises: 
 > > `ResponseError` [ResponseError](../../../lsp/structs/ResponseError.md): If the shutdown flag has been set, the `ServerQuit` error code is used. If the endpoint's timeout is exceeded, the `ServerTimeout` error code is used.

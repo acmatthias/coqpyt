@@ -97,12 +97,12 @@ truncate(self, text: str) -> None
 ```python
 didOpen(self) -> None
 ```
-> Tells the Coq LSP client to open the current file and parse it.
+> Tells the Rocq LSP client to open the current file and parse it.
 
 ```python
 didChange(self) -> None
 ```
-> Tells the Coq LSP client that the file was changed and should be re parsed.
+> Tells the Rocq LSP client that the file was changed and should be re parsed.
 
 ```python
 close(self)

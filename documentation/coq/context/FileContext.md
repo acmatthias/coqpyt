@@ -1,6 +1,6 @@
 # `FileContext`
 
-Represents the context of a Coq file in terms of the loaded terms and libraries up to a specific point in the file.
+Represents the context of a Rocq file in terms of the loaded terms and libraries up to a specific point in the file.
 
 ## Attributes
 
@@ -32,13 +32,13 @@ Represents the context of a Coq file in terms of the loaded terms and libraries 
 > Version based string containing the dictionary key of notations returned by coqtop.
 
 `__ext_plugin : Callable`
-> Version based function to get the external plugin field of a Coq expression.
+> Version based function to get the external plugin field of a Rocq expression.
 
 `__ext_entry : Callable`
-> Version based function to get the external entry field of a Coq expression.
+> Version based function to get the external entry field of a Rocq expression.
 
 `ext_index : Callable`
-> Version based function to get the external index field of a Coq expression. This function will be made private once `__get_program_context` is extracted from ProofFile to here.
+> Version based function to get the external index field of a Rocq expression. This function will be made private once `__get_program_context` is extracted from ProofFile to here.
 
 `__fixpoint_notations : Callable`
 > Version based function to get the notations of a term in the AST.
@@ -79,7 +79,7 @@ __init__(self, path: str, module: Optional[List[str]] = None, coqtop: str = "coq
 > > *Optional.* Module where the file is included. Defaults to None.
 > 
 > `coqtop : str = "coqtop"`
-> > *Optional.* Path to the coqtop binary used to compile the Coq libraries imported by coq-lsp. Defaults to "coqtop".
+> > *Optional.* Path to the coqtop binary used to compile the Rocq libraries imported by coq-lsp. Defaults to "coqtop".
 > 
 > `terms : Optional[Dict[str, Term]] = None` [Term](../structs/Term.md)
 > > *Optional.* Collection of terms to initialize the context with. Defaults to None.
@@ -225,7 +225,7 @@ __init_coq_version(self, coqtop: str) -> None
 > Checks the version of coqtop and updates helper functions to assist the parsing of coqtop's output according to its version.
 > 
 > `coqtop : str`
-> > Path to the coqtop binary used to compile the Coq libraries imported by coq-lsp.
+> > Path to the coqtop binary used to compile the Rocq libraries imported by coq-lsp.
 
 ```python
 __init_context(self, terms: Optional[Dict[str, Term]] = None) -> None

@@ -1,6 +1,6 @@
 # `Term`
 
-Term of a Coq file. Represents a variable that is defined in a file or library to be used elsewhere in the program.
+Term of a Rocq file. Represents a variable that is defined in a file or library to be used elsewhere in the program.
 
 ## Attributes
 

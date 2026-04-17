@@ -1,6 +1,6 @@
 # `CoqFileProgressParams`
 
-Structure holding information on the processing progress of each range in the AST for a given Coq file.
+Structure holding information on the processing progress of each range in the AST for a given Rocq file.
 
 ## Attributes
 

@@ -1,6 +1,6 @@
 # `CoqFileProgressKind`
 
-Represents the kind of Coq file processing program.
+Represents the kind of Rocq file processing program.
 
 ## Values
 

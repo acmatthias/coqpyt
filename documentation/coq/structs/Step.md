@@ -1,6 +1,6 @@
 # `Step`
 
-Individual step to be executed in a Coq file.
+Individual step to be executed in a Rocq file. Each step is a single expression that can be found in the AST produced by the language server.
 
 ## Attributes
 

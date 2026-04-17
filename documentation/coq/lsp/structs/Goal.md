@@ -1,6 +1,6 @@
 # `Goal`
 
-Abstraction of a Coq goal.
+Abstraction of a Rocq goal.
 
 ## Attributes
 

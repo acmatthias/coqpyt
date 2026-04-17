@@ -1,6 +1,6 @@
 # `CoqAdd(CoqChange)` [CoqChange](CoqChange.md)
 
-Represents the addition of a step to a CoqFile 
+Represents the addition of a step to a Rocq file.
 
 ## Attributes
 

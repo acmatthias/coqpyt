@@ -8,7 +8,7 @@ An item to transfer a text document from the client to the server.
 > The location of the file.
 
 `languageId : str`
-> Identifier of the file type. For a Coq file, this will be "coq". Other possible entries can be found in the [LANGUAGE_IDENTIFIER](./LANGUAGE_IDENTIFIER.md) enum.
+> Identifier of the file type. For a Rocq file, this will be "coq". Other possible entries can be found in the [LANGUAGE_IDENTIFIER](./LANGUAGE_IDENTIFIER.md) enum.
 
 `version : int`
 > The version number of the file.
@@ -28,7 +28,7 @@ __init__(self, uri: str, languageId: str, version: int, text: str)
 > > The location of the file.
 > 
 > `languageId : str`
-> > Identifier of the file type. For a Coq file, this will be "coq".
+> > Identifier of the file type. 
 > 
 > `version : int`
 > > The version number of the file.

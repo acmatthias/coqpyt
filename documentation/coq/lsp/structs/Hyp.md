@@ -1,6 +1,6 @@
 # `Hyp`
 
-Abstraction of a Coq hypothesis.
+Abstraction of a Rocq hypothesis.
 
 ## Attributes
 

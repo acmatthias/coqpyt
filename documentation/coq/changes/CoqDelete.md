@@ -1,6 +1,6 @@
 # `CoqDelete(CoqChange)` [CoqChange](CoqChange.md)
 
-Represents the removal of a step from a coq file.
+Represents the removal of a step from a Rocq file.
 
 ## Attributes
 

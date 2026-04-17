@@ -1,6 +1,6 @@
 # `ProofFile(CoqFile)` [CoqFile](../base_file/CoqFile.md)
 
-Allows to get information about the proofs of a Coq file. ProofState will run the file from its current state, i.e., if the file has finished its execution, ProofState won't return anything. The Coq file will be fully checked after the creation of a ProofState.
+Allows to get information about the proofs of a Rocq file. ProofState will run the file from its current state, i.e., if the file has finished its execution, ProofState won't return anything. The Rocq file will be fully checked after the creation of a ProofState.
 
 ## Attributes
 
@@ -11,7 +11,7 @@ Allows to get information about the proofs of a Coq file. ProofState will run th
 > How errors are handled. Can be "strict" or "warning". If "strict", an exception will be raised when an unexpected behavior occurs. If "warning", a warning will be logged instead (it only applies to recoverable errors).
 
 `__use_disk_cache : bool`
-> If True, the terms from each loaded library are stored in a cache on disk. Then, when creating or manipulating future proof files, terms are loaded from the cache if their corresponding library (file) has the same text.  Note that caching only depends on the text of the file, so if the Coq version changes, or the version of coqpyt changes, the cache should be deleted.
+> If True, the terms from each loaded library are stored in a cache on disk. Then, when creating or manipulating future proof files, terms are loaded from the cache if their corresponding library (file) has the same text.  Note that caching only depends on the text of the file, so if the Rocq version changes, or the version of coqpyt changes, the cache should be deleted.
 
 `__coq_lsp_options : Tuple[str]`
 > Options to be passed to the coq-lsp on startup. 
@@ -35,10 +35,10 @@ Allows to get information about the proofs of a Coq file. ProofState will run th
 ## Properties
 
 `proofs : List[ProofTerm]` [ProofTerm](../structs/ProofTerm.md)
-> Gets all the closed proofs in the file and their corresponding steps. Each element has the list of steps for a single closed proof of the Coq file. The proofs are ordered by the order they are closed on the file. The steps include the context used for each step and the goals in that step.
+> Gets all the closed proofs in the file and their corresponding steps. Each element has the list of steps for a single closed proof of the Rocq file. The proofs are ordered by the order they are closed on the file. The steps include the context used for each step and the goals in that step.
 
 `open_proofs : List[ProofTerm]` [ProofTerm](../structs/ProofTerm.md)
-> Gets all the open proofs in the file and their corresponding steps. Each element has the list of steps for a single open proof of the Coq file. The proofs are ordered by the order they are opened on the file. The steps include the context used for each step and the goals in that step.
+> Gets all the open proofs in the file and their corresponding steps. Each element has the list of steps for a single open proof of the Rocq file. The proofs are ordered by the order they are opened on the file. The steps include the context used for each step and the goals in that step.
 
 `unproven_proofs : List[ProofTerm]` [ProofTerm](../structs/ProofTerm.md)
 > Gets all the the open proofs and admitted proofs.
@@ -61,7 +61,7 @@ __init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30,
 > Creates a ProofFile.
 >
 > `file_path : str`
-> > Path of the Coq file.
+> > Path of the Rocq file.
 >
 > `library : Optional[str] = None`
 > > *Optional.* The library of the file. Defaults to None.
@@ -82,13 +82,13 @@ __init__(self, file_path: str, library: Optional[str] = None, timeout: int = 30,
 > > *Optional.* Options to be passed to the coq-lsp on startup. Defaults to None.
 >
 > `coqtop : str = "coqtop"`
-> > *Optional.* Path to the coqtop binary used to compile the Coq libraries imported by coq-lsp. This is NOT passed as a parameter to coq-lsp, it is simply used to check the Coq version in use. Defaults to "coqtop".
+> > *Optional.* Path to the coqtop binary used to compile the Rocq libraries imported by coq-lsp. This is NOT passed as a parameter to coq-lsp, it is simply used to check the Rocq version in use. Defaults to "coqtop".
 > 
 > `error_mode : str = "strict"`
 > > *Optional.* How errors are handled. Can be "strict" or "warning". If "strict", an exception will be raised when an unexpected behavior occurs. If "warning", a warning will be logged instead (it only applies to recoverable errors). Defaults to "strict".
 > 
 > `use_disk_cache : bool = False`
-> > *Optional.* If True, the terms from each loaded library are stored in a cache on disk. Then, when creating or manipulating future proof files, terms are loaded from the cache if their corresponding library (file) has the same text.  Note that caching only depends on the text of the file, so if the Coq version changes, or the version of coqpyt changes, the cache should be deleted.
+> > *Optional.* If True, the terms from each loaded library are stored in a cache on disk. Then, when creating or manipulating future proof files, terms are loaded from the cache if their corresponding library (file) has the same text.  Note that caching only depends on the text of the file, so if the Rocq version changes, or the version of coqpyt changes, the cache should be deleted.
 
 ```python
 _handle_exception(self, e) -> None
@@ -179,10 +179,10 @@ delete_step(self, step_index: int) -> None
 change_steps(self, changes: List[CoqChange]) -> None
 
 ```
-> Changes the steps of the original Coq file transactionally. If an exception is thrown the file will not be changed.
+> Changes the steps of the original Rocq file transactionally. If an exception is thrown the file will not be changed.
 >
 > `changes : List[CoqChange]` [CoqChange](../changes/CoqChange.md)
-> > The changes to be applied to the Coq file.
+> > The changes to be applied to the Rocq file.
 
 ```python
 
@@ -450,7 +450,7 @@ __is_proven(self, proof: ProofTerm) -> bool
 ```python
 set_library_cache_size(size: Optional[int]) -> None
 ```
-> Sets the size of the cache used to store the libraries of the Coq files.
+> Sets the size of the cache used to store the libraries of the Rocq files.
 > 
 > `size : Optional[int]`
 > > The size of the cache. If None, the cache will have no limit.

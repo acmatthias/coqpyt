@@ -5,7 +5,7 @@ Contains additional information about the context in which a completion request 
 ## Attributes
 
 `triggerKind : int`
-> How the completion was triggered. The 3 allowed values are as follows:
+> How the completion was triggered. The 3 allowed values as defined in [CompletionTriggerKind](./CompletionTriggerKind.md) are as follows:
 > 1. Invoked
 > 2. TriggerCharacter
 > 3. TriggerForIncompleteCompletions

@@ -11,7 +11,7 @@ Term specifically used in a proof file.
 > The terms and notations used in the definition of this proof term.
 
 `program : Optional[Term]` [Term](./Term.md)
-> The full program context that is accessible to the module that this proof is in when defined.
+> The last term defined in the context. Used to identify where in the program this term has been defined.
 
 ## Operations
 
@@ -30,4 +30,4 @@ __init__(self, term: Term, context: List[Term], steps: List[ProofStep], program:
 > > The list of all steps taken in defining this term.
 > 
 > `program : Optional[Term] = None` [Term](./Term.md)
-> > *Optional.* The full program context that is accessible to the module that this proof is in when defined. Defaults to None.
+> > *Optional.* The last term defined in the context. Defaults to None.

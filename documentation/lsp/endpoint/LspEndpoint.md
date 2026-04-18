@@ -93,9 +93,9 @@ send_response(self, id: int, result, error) -> None
 > > Any errors created in handling the method.
 
 ```python
-send_message(self, method_name, params, id = None) -> None
+send_message(self, method_name: str, params, id: Optional[int] = None) -> None
 ```
-> Sends a message to the language server.
+> Sends a message to the language server. Messages are specific types of requests where the server does not respond.
 > 
 > `method_name : str`
 > > Name of the lsp method to call.
@@ -103,7 +103,7 @@ send_message(self, method_name, params, id = None) -> None
 > `params`
 > > Parameters to pass to the method.
 > 
-> `id : int = None`
+> `id : Optional[int] = None`
 > > *Optional.* ID of the method for tracking the server's response. Defaults to None.
 
 ```python

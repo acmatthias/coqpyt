@@ -7,6 +7,9 @@ A structure representing a diagnostic about a part of a file. These can be anyth
 `range : Range` [Range](./Range.md)
 > The range at which the message applies in a resource file.
 
+`message : str`
+> The diagnostic's message.
+
 `severity : Optional[int]`
 > The diagnostic's severity. The four allowed values are as follows (as found in the [DiagnosticSeverity](./DiagnosticSeverity.md) enum):
 > 1. Error
@@ -22,11 +25,8 @@ A structure representing a diagnostic about a part of a file. These can be anyth
 `source : Optional[str]`
 > A human-readable string describing the source of this diagnostic, e.g. 'typescript' or 'super lint'.
 
-`message : Optional[str]`
-> The diagnostic's message.
-
 `relatedInformation : Optional[List]`
-> An array of related diagnostic information, e.g. when symbol-names within a scope collide all definitions can be marked via this property.
+> An array of related diagnostic information, e.g. when symbol-names within a scope collide all definitions can be marked via this property. The structure of this attribute should conform to [DiagnosticRelatedInformation](./DiagnosticRelatedInformation.md).
 
 
 ## Operations

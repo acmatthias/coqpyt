@@ -58,9 +58,9 @@ __init__(self, textDocument: VersionedTextDocumentIdentifier, position: Position
 ## Static Operations
 
 ```python
-parse(goal_config: Dict) -> Optional[GoalAnswer]
+parse(goal_answer: Dict) -> Optional[GoalAnswer]
 ```
-> Converts a dictionary representing goal config into a GoalAnswer object.
+> Converts a dictionary representing goal answer into a GoalAnswer object.
 > 
 > `goal : Dict`
 > > Dictionary to parse.

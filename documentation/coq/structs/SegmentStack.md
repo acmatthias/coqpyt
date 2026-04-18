@@ -48,7 +48,8 @@ pop(self) -> None
 ```python
 go_forward(self, name: str) -> None
 ```
-> Re adds the previous segment type after the current top of the stack.
+> Navigates forward through the stack while maintaining the stacks previous order.
+Re adds the previous segment type after the current top of the stack.
 > 
 > `name : str`
 > > Name of the segment to add.
@@ -56,12 +57,12 @@ go_forward(self, name: str) -> None
 ```python
 go_back(self) -> None
 ```
-> Removes the current top of the stack from segment list.
+> Navigates backward through the stack without permanently modifying it.
 
 ```python
 __match_apply(self, type: SegmentType, operation: Callable, *args: Any) -> None
 ```
-> Helper method to apply list operations on to each segment depending on the segment type
+> Helper method to apply list operations on to each segment depending on the segment type.
 > 
 > `type : SegmentType` [SegmentType](./SegmentType.md)
 > > Type of the segment.

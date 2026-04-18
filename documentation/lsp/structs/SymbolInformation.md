@@ -19,17 +19,17 @@ Represents programming constructs like variables, classes, interfaces etc. that 
 `detail : Optional`
 > More detail for this symbol, e.g the signature of a function.
 
-`range : Optional`
+`range : Optional[Range]`
 > The range enclosing this symbol not including leading/trailing whitespace but everything else like comments. This information is typically used to determine if the clients cursor is inside the symbol to reveal it  in the UI.
 
-`selectionRange : Optional`
+`selectionRange : Optional[Range]`
 > The range that should be selected and revealed when this symbol is being picked, e.g. the name of a function. Must be contained by the `range`.
 
 
 ## Operations
 
 ```python
-__init__(self, name: str, kind: int, detail = None, range = None, selectionRange = None, location = None, containerName: Optional[str] = None, deprecated: bool = False)
+__init__(self, name: str, kind: int, detail = None, range: Range = None, selectionRange: Range = None, location: Location = None, containerName: Optional[str] = None, deprecated: bool = False)
 ```
 > Constructs a new SymbolInformation instance.
 > 
@@ -42,16 +42,16 @@ __init__(self, name: str, kind: int, detail = None, range = None, selectionRange
 > `detail = None`
 > > *Optional.* More detail for this symbol, e.g the signature of a function. Defaults to None.
 > 
-> `range = None`
+> `range : Range = None` [Range](./Range.md)
 > > *Optional.* The range enclosing this symbol not including leading/trailing whitespace but everything else like comments. Defaults to None.
 > 
-> `selectionRange = None`
+> `selectionRange : Range = None` [Range](./Range.md)
 > > *Optional.* The range that should be selected and revealed when this symbol is being picked, e.g. the name of a function. Must be contained by the `range`. Defaults to None.
 > 
-> `location = None`
+> `location : Location = None` [Location](./Location.md)
 > > *Optional.* The location of this symbol. Defaults to None.
 > 
-> `containerName: Optional[str] = None`
+> `containerName : Optional[str] = None`
 > > *Optional.* The name of the symbol containing this symbol. Defaults to None.
 > 
 > `deprecated : bool = False`

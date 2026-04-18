@@ -1,6 +1,6 @@
 # `CoqFile`
 
-Abstraction to interact with a Rocq file.
+Abstraction to interact with a Rocq file. This object can be used to navigate through the file and observe defined terms. It can also be used to apply edits to the file with automatic checking of whether or not the changes were valid.
 
 ## Attributes
 
@@ -41,7 +41,7 @@ Abstraction to interact with a Rocq file.
 > Whether the file's library is from the `Coq.Init` or `Corelib.Init` modules.
 
 `__backup_steps : List[Step]` [Step](../structs/Step.md)
-> Holds a backup of all steps.
+> Holds a backup of all steps. This is used for changes to the Rocq file that could error and would need to be rolled back.
 
 `__index_tracker : List[Optional[int]]`
 > Maps the index of steps in `steps` to the index of those same steps in `__backup_steps`.

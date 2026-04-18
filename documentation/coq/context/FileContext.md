@@ -244,7 +244,7 @@ __add_terms(self, step: Step, expr: List) -> None
 > > Step corresponding to the part of the AST that is being processed.
 > 
 > `expr : List`
-> > Coq AST to be processed.
+> > Expression corresponding to this step as found in the AST.
 
 ```python
 __add_term(self, name: str, step: Step, term_type: TermType) -> None
@@ -288,7 +288,7 @@ __handle_where_notations(self, step: Step, expr: List, term_type: TermType) -> N
 ```python
 __is_extend(self, expr: List, entry: str | Tuple[str], exact: bool = True) -> bool
 ```
-> Checks if the given expression in the AST extends `entry`.
+> Checks if the given expression in the AST extends the provided `entry` field.
 > 
 > `expr : List`
 > > Expression in the AST to consider.
@@ -355,7 +355,7 @@ get_ident(id: List) -> Optional[str]
 > Returns: `Optional[str]` The identifier of the generic argument if it exists.
 
 ```python
-get_notation_scope(notation: str)
+get_notation_scope(notation: str) -> str
 ```
 > Get the scope of a notation.
 > 

@@ -407,7 +407,7 @@ __get_changes_data(self, changes: List[CoqChange]) -> Tuple[List[int], List[int]
 ```python
 __goals(self, end_pos: Position) -> Optional[GoalAnswer]
 ```
-> Requests the goals of the proof at `end_pos` from the coq-lsp.
+> Requests the goals of the proof at `end_pos` from the coq-lsp. Generally, this is used to find what still needs to be proven at a current point in the file.
 > 
 > `end_pos : Position`
 > > The position of the proof.

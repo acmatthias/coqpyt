@@ -1,6 +1,6 @@
 # `LspClient`
 
-LspClient is used to communicate with an instance of a language server, providing methods for basic method calls and notifications. This class is used only to abstract away the names and behaviors of the each method call and does not handle how the messages are actually sent (see LspEndpoint).
+LspClient is used to communicate with an instance of a language server, providing methods for basic method calls and notifications. This class is used only to abstract away the names and behaviors of the each method call and does not handle how the messages are actually sent (see [LspEndpoint](../endpoint/LspEndpoint.md)). More information about what each operation returns such as the structure of method responses can be found [here](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/)
 
 ## Attributes
 
@@ -19,7 +19,7 @@ __init__(self, lsp_endpoint: LspEndpoint)
 > > Language server endpoint.
 
 ```python
-initialize(self, processId: int, rootPath: str, rootUri: str, initializationOptions, capabilities: Dict, trace: str, workspaceFolders: List) -> Any
+initialize(self, processId: int, rootPath: str, rootUri: str, initializationOptions, capabilities: Dict, trace: str, workspaceFolders: List) -> Dict
 ```
 > The initialize request is sent as the first request from the client to the server. If the server receives a request or notification before the initialize request it should act as follows:
 > 1. For a request the response should be an error with code: -32002. The message can be picked by the server.
@@ -52,41 +52,35 @@ initialize(self, processId: int, rootPath: str, rootUri: str, initializationOpti
 > `workspaceFolders : List`
 > > The workspace folders configured in the client when the server starts. This property is only available if the client supports workspace folders. It can be `null` if the client supports workspace folders but none are configured.
 > 
-> Returns: `Any` Response of the `"initialize"` method call.
+> Returns: `Dict` Response of the `"initialize"` method call, containing the capabilites of the server, its name, and also its version.
 
 ```python
-initialized(self) -> Any
+initialized(self) -> None
 ```
 > The initialized notification is sent from the client to the server after the client received the result of the initialize request but before the client is sending any other request or notification to the server. The server can use the initialized notification for example to dynamically register capabilities. The initialized notification may only be sent once.
-> 
-> Returns: `Any` Response of the `"initialized"` method call.
 
 ```python
 shutdown(self) -> Any
 ```
 > The shutdown request is sent from the client to the server. It asks the server to shut down, but to not exit (otherwise the response might not be delivered correctly to the client). There is a separate exit notification that asks the server to exit. Clients must not send any notifications other than `exit` or requests to a server to which they have sent a shutdown request. Clients should also wait with sending the `exit` notification until they have received a response from the `shutdown` request.
 > 
-> Returns: `Any` Response of the `"shutdown"` method call.
+> Returns: `Any` Response of the `"shutdown"` method call. If an exception occurs, the error will be returned.
 
 ```python
-exit(self) -> Any
+exit(self) -> None
 ```
 > A notification to ask the server to exit its process. The server should exit with `success` code 0 if the shutdown request has been received before; otherwise with `error` code 1.
-> 
-> Returns: `Any` Response of the `"exit"` method call.
 
 ```python
-didClose(self, textDocument: TextDocumentIdentifier) -> Any
+didClose(self, textDocument: TextDocumentIdentifier) -> None
 ```
 > The document close notification is sent from the client to the server when the document got closed in the client. The document’s master now exists where the document’s Uri points to (e.g. if the document’s Uri is a file Uri the master now exists on disk). As with the open notification the close notification is about managing the document’s content. Receiving a close notification doesn’t mean that the document was open in an editor before. A close notification requires a previous open notification to be sent. Note that a server’s ability to fulfill requests is independent of whether a text document is open or closed.
 > 
 > `textDocument : TextDocumentIdentifier` [TextDocumentIdentifer](../structs/TextDocumentIdentifier.md)
 > > The document that was closed
-> 
-> Returns: `Any` Response from the `"textDocument/didClose"` method call.
 
 ```python
-didOpen(self, textDocument: TextDocumentItem) -> Any
+didOpen(self, textDocument: TextDocumentItem) -> None
 ```
 > The document open notification is sent from the client to the server to signal newly opened text documents. The document's truth is now managed by the client and the server must not try to read the document's truth using the document's uri. Open in this sense means it is managed by the client. It doesn't necessarily mean that its content is presented in an editor. An open notification must not be sent more than once without a corresponding close notification send before. This means open and close notification must be balanced and the max open count for a particular textDocument is one. Note that a server's ability to fulfill requests is independent of whether a text document is open or closed.
 > 
@@ -94,11 +88,9 @@ didOpen(self, textDocument: TextDocumentItem) -> Any
 > 
 > `textDocument : TextDocumentItem` [TextDocumentItem](../structs/TextDocumentItem.md)
 > > The document that was opened.
-> 
-> Returns: `Any` Response from the `"textDocument/didOpen"` method call.
 
 ```python
-didChange(self, textDocument: VersionedTextDocumentIdentifier, contentChanges: List[TextDocumentContentChangeEvent]) -> Any
+didChange(self, textDocument: VersionedTextDocumentIdentifier, contentChanges: List[TextDocumentContentChangeEvent]) -> None
 ```
 > The document change notification is sent from the client to the server to signal changes to a text document. In 2.0 the shape of the params has changed to include proper version numbers and language ids.
 > 
@@ -107,8 +99,6 @@ didChange(self, textDocument: VersionedTextDocumentIdentifier, contentChanges: L
 > 
 > `contentChanges: List[TextDocumentContentChangeEvent]` [TextDocumentContentChangeEvent](../structs/TextDocumentContentChangeEvent.md)
 > > The actual content changes. The content changes describe single state changes to the document. So if there are two content changes c1 and c2 for a document in state S then c1 move the document to S' and c2 to S''.
-> 
-> Returns: `Any` Response from the `"textDocument/didChange"` method call.
 
 ```python
 documentSymbol(self, textDocument: TextDocumentItem) -> List[SymbolInformation]

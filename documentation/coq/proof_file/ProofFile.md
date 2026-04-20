@@ -152,9 +152,7 @@ change_proof(self, proof: ProofTerm, proof_changes: List[ProofChange]) -> None
 > > `NotImplementedError`: If the changes contain an unknown ProofChange.
 
 ```python
-
 add_step(self, previous_step_index: int, step_text: str) -> None
-
 ```
 > Adds a step to the file. This function will change the original file. If an exception is thrown the file will not be changed.
 >
@@ -165,9 +163,7 @@ add_step(self, previous_step_index: int, step_text: str) -> None
 > > The text of the step to add.
 
 ```python
-
 delete_step(self, step_index: int) -> None
-
 ```
 > Deletes a step from the file. This function will change the original file. If an exception is thrown the file will not be changed.
 >
@@ -175,9 +171,7 @@ delete_step(self, step_index: int) -> None
 > > The index of the step to remove.
 
 ```python
-
 change_steps(self, changes: List[CoqChange]) -> None
-
 ```
 > Changes the steps of the original Rocq file transactionally. If an exception is thrown the file will not be changed.
 >
@@ -185,9 +179,7 @@ change_steps(self, changes: List[CoqChange]) -> None
 > > The changes to be applied to the Rocq file.
 
 ```python
-
 close(self) -> None
-
 ```
 > Closes all resources used by this object.
 

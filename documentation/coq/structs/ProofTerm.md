@@ -1,6 +1,6 @@
 # `ProofTerm(Term)` [Term](./Term.md)
 
-Term specifically used in a proof file.
+Term specifically used in a proof file. These terms are used to identify the proofs in the file. 
 
 ## Attributes
 

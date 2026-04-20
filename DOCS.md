@@ -10,7 +10,7 @@ This document covers the basic breakdown of the CoqPyt system, allowing for the 
 For per class documentation, see the [documentation folder](./documentation/). Within this folder, all classes are organized the same as they are in the source code. The only difference is that the files containing the classes are folders with each class existing as a separate markdown file. For example, to see documentation for `CoqFile`, go to [documentation/coq/base_file/CoqFile.md](./documentation/coq/base_file/CoqFile.md).
 
 ### Contents:
-- [Packages and Components](#packages-and-components)
+- [Components and Packages](#components-and-packages)
 - [Class Implementations](#class-implementations)
     - [`lsp` Package](#lsp-package)
     - [`coq::lsp` Package](#coqlsp-package)
@@ -24,13 +24,7 @@ For per class documentation, see the [documentation folder](./documentation/). W
 - [Credits](#credits)
 
 
-## Packages and Components
-
-As a framework intended to communicate with the Rocq LSP, proper interfaces must be put in place to assist with this communication. To do so, the CoqPyt source code is broken down into 3 packages, as shown below.
-
-![Packages](./documentation/images/Package%20Diagram.png)
-
-The external `lsp` package contains a basic implementation of JSON RPC based LSP client. The `coq` package contains all classes that are directly related to CoqPyt, such as the `CoqFile` class and `FileContext` class. With in the `coq` package, the internal `lsp` package contains a specialized instance of an LSP client for Rocq. More information of how each of these packages carry out their tasks can be found under [Class Implementations](#class-implementations).
+## Components and Packages
 
 With how CoqPyt is designed, the system can be broken down into 4 components, the Rocq LSP itself, the LSP Client, the Rocq Context, and finally the base of CoqPyt itself.
 
@@ -43,6 +37,12 @@ The `LspClient` component is the implementation of a client that can be used to 
 The `CoqContext` component is a collection of classes that abstract over the elements that can be found in Rocq file. Terms and steps are structures that represent the definitions of variables and notations and the tactics that are used in these definitions. The proof variants of these include extra information that is specific to the goal driven nature of Rocq proofs. `FileContext` is the main class used to manage these definitions through the processing of steps in the AST of the Rocq file.
 
 The `CoqPyt` component is the main interface that is open for the user to interact with. Both `CoqFile` and `ProofFile` provide operations for navigation through and modifying Rocq files. 
+
+As a framework intended to communicate with the Rocq LSP, proper interfaces must be put in place to assist with this communication. To do so, the CoqPyt source code is broken down into 3 packages, as shown below.
+
+![Packages](./documentation/images/Package%20Diagram.png)
+
+The external `lsp` package contains a basic implementation of JSON RPC based LSP client. The `coq` package contains all classes that are directly related to CoqPyt, such as the `CoqFile` class and `FileContext` class. With in the `coq` package, the internal `lsp` package contains a specialized instance of an LSP client for Rocq. More information of how each of these packages carry out their tasks can be found below.
 
 
 ## Class Implementations

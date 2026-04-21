@@ -7,9 +7,9 @@ This document covers the basic breakdown of the CoqPyt system, allowing for the 
 - Explanations for the most notable classes in each package, and
 - Sequence diagrams demonstrating how some notable operations work under the hood.
 
-For per class documentation, see the [documentation folder](./documentation/). Within this folder, all classes are organized the same as they are in the source code. The only difference is that the files containing the classes are folders with each class existing as a separate markdown file. For example, to see documentation for `CoqFile`, go to [documentation/coq/base_file/CoqFile.md](./documentation/coq/base_file/CoqFile.md).
 
-### Contents:
+## Table of Contents
+- [Per-Class Documentation](#per-class-documentation)
 - [Components and Packages](#components-and-packages)
 - [Class Implementations](#class-implementations)
     - [`lsp` Package](#lsp-package)
@@ -24,9 +24,13 @@ For per class documentation, see the [documentation folder](./documentation/). W
 - [Credits](#credits)
 
 
+## Per-Class Documentation
+For detailed, per-class documentation, see [PerClassDocs.md](./documentation/PerClassDocs.md). 
+
+
 ## Components and Packages
 
-With how CoqPyt is designed, the system can be broken down into 4 components, the Rocq LSP itself, the LSP Client, the Rocq Context, and finally the base of CoqPyt itself.
+With how CoqPyt is designed, the system could be broken down into 4 components, the Rocq LSP itself, the LSP Client, the Rocq Context, and finally the base of CoqPyt itself. This is not how the system is structured in the source code, however it can be helpful to view it this way for better understanding.
 
 ![Components](./documentation/images/ComponentDiagram.png)
 
